@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-03-22 07:23:16
+-- Generation Time: 2017-03-22 07:23:23
 -- 服务器版本： 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel`
+-- Database: `laravel_test`
 --
 
 -- --------------------------------------------------------
@@ -52,12 +52,11 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(11, '2014_10_12_000000_create_users_table', 1),
-(12, '2014_10_12_100000_create_password_resets_table', 1),
-(13, '2017_03_16_051923_create_tasks_table', 1),
-(14, '2017_03_17_015712_create_posts_table', 1),
-(15, '2017_03_18_053952_create_comments_table', 1),
-(16, '2017_03_22_050746_create_tags_table', 2);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2017_03_16_051923_create_tasks_table', 1),
+(4, '2017_03_17_015712_create_posts_table', 1),
+(5, '2017_03_18_053952_create_comments_table', 1);
 
 -- --------------------------------------------------------
 
@@ -85,57 +84,6 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- 转存表中的数据 `posts`
---
-
-INSERT INTO `posts` (`id`, `user_id`, `title`, `body`, `created_at`, `updated_at`) VALUES
-(1, 1, 'First post', 'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.', '2017-02-19 23:57:31', '2017-02-19 23:57:31'),
-(2, 2, 'Second Post', 'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.', '2017-01-19 23:58:48', '2017-01-19 23:58:48'),
-(3, 3, 'Third Post', 'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.', '2017-03-20 00:36:18', '2017-03-20 00:36:18'),
-(4, 6, 'Some Post', 'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.', '2017-03-21 17:50:00', '2017-03-21 17:50:00');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `post_tag`
---
-
-CREATE TABLE `post_tag` (
-  `post_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- 转存表中的数据 `post_tag`
---
-
-INSERT INTO `post_tag` (`post_id`, `tag_id`) VALUES
-(1, 1),
-(2, 1),
-(3, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `tags`
---
-
-CREATE TABLE `tags` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- 转存表中的数据 `tags`
---
-
-INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'personal', '2017-03-22 05:13:48', '2017-03-22 05:13:48'),
-(2, 'php', '2017-03-22 05:13:48', '2017-03-22 05:13:48');
 
 -- --------------------------------------------------------
 
@@ -168,18 +116,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 转存表中的数据 `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'John Doe', 'john@example.com', '$2y$10$4rNDMaeRpMIFE4inBUEMTOIJH3uGemJln99SWoVvveMMbT3kaX79W', 'SKsmvBRHqzYvrEgv3KrpbgAW8OzGs1ojNSpmAcNcQam8AYD2wAutgjze4bvL', '2017-03-19 23:56:57', '2017-03-19 23:56:57'),
-(2, 'Jane Doe', 'jane@example.com', '$2y$10$xm.Nu.yxUVNoDj9Xod/ften3Mg42mginUCjPATh8q3vfj9uqtqgxm', 'xZkEEPWs3WnaZm9LaMRoKFnmdA8hw0Kf1O4EWWbQlHaGQkxmohHFZ4UOfEJQ', '2017-03-19 23:58:19', '2017-03-19 23:58:19'),
-(3, 'Fred Zhou', 'fred@example.com', '$2y$10$LQ7PVeCzdJBEfN6CrFseye3mIpyVaRcAtdjcKwEBrvla/Ig014sAq', NULL, '2017-03-20 00:35:54', '2017-03-20 00:35:54'),
-(4, 'Test', 'test@example.com', '$2y$10$Vxnmdh/UvpYPZ6obVQR.tO8UEZP9rOrBx3ukmjntE.Db6EZJJ7tJO', 'wqkuVvt3P6uYP9kjPi3CcndQJp3B4F7oK6fWBugvVKfepRHMSgxbPsTgVijs', '2017-03-21 00:49:17', '2017-03-21 00:49:17'),
-(5, 'Test2', 'test2@example.com', '$2y$10$kRltcwzLMY/2nCck6PYpMenL9mLo2YWLdnydouEqPODKjZSrG8BwO', NULL, '2017-03-21 00:58:02', '2017-03-21 00:58:02'),
-(6, 'test3', 'test3@example.com', '$2y$10$mCwuXCibIVg1PKepieRSjOCHsQ9/X9Iq8RlvrFxjN9UkId3wJE7Bm', '0kmkksqMWUfbC3qE5sWqrcw0cufqKohNwKpvCtf0vslSoH9MxkL8ognMIbUF', '2017-03-21 17:39:04', '2017-03-21 17:39:04');
-
---
 -- Indexes for dumped tables
 --
 
@@ -209,19 +145,6 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post_tag`
---
-ALTER TABLE `post_tag`
-  ADD PRIMARY KEY (`post_id`,`tag_id`);
-
---
--- Indexes for table `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tags_name_unique` (`name`);
-
---
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
@@ -247,17 +170,12 @@ ALTER TABLE `comments`
 -- 使用表AUTO_INCREMENT `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用表AUTO_INCREMENT `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- 使用表AUTO_INCREMENT `tasks`
 --
@@ -267,7 +185,7 @@ ALTER TABLE `tasks`
 -- 使用表AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
